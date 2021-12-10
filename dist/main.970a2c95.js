@@ -115,39 +115,55 @@ var str2 = '/*\n\u73B0\u5728\u745E\u62C9\u8981\u5F00\u59CB\u8868\u6F14\u4E86\n\u
 // str = str.replace(/\n/g, '<br>')
 var displayStr = '';
 var imgPath = '<img src="./rella.png" alt="rella" width="20%">';
+var str1Finished = false;
 
-var step = function step(str) {
+var step = function step(str1, str2) {
     setTimeout(function () {
-        if (n < str.length) {
-            if (str[n] === '\n') {
+        if (!str1Finished && n < str1.length) {
+            if (str1[n] === '\n') {
                 displayStr += '<br>';
-            } else if (str[n] === ' ') {
+            } else if (str1[n] === ' ') {
                 displayStr += '&nbsp';
             } else {
-                displayStr += str[n];
+                displayStr += str1[n];
             }
 
             html.innerHTML = displayStr;
-            css.innerHTML = str.substring(0, n + 1);
+            css.innerHTML = str1.substring(0, n + 1);
             window.scrollTo(0, 999999);
             html.scrollTo(0, 999999);
             n += 1;
-            step(str);
-        } else {
+            step(str1, str2);
+        } else if (!str1Finished && n === str1.length) {
             rella.innerHTML = imgPath;
             n = 0;
+            str1Finished = true;
+            step(str1, str2);
+        } else if (str1Finished && n < str2.length) {
+            if (str2[n] === '\n') {
+                displayStr += '<br>';
+            } else if (str2[n] === ' ') {
+                displayStr += '&nbsp';
+            } else {
+                displayStr += str2[n];
+            }
+
+            html.innerHTML = displayStr;
+            css.innerHTML = str2.substring(0, n + 1);
+            window.scrollTo(0, 999999);
+            html.scrollTo(0, 999999);
+            n += 1;
+            step(str1, str2);
         }
     }, 50);
 };
 
-step(str1);
+step(str1, str2);
 // console.log(str1.length)
-setTimeout(function () {
-    return step(str2);
-}, 50 * str1.length + 500);
+// setTimeout(() => step(str2), 50 * str1.length + 1000)
 
 // displayStr = ''
 // n = 0
 // step(str2)
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.f96d91e1.map
+//# sourceMappingURL=main.970a2c95.map
