@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <title>今天也是新的瑞拉</title>
+</head>
+
+<body>
+
+    <div id="demo"></div>
+    <div id="rella"></div>
+
+    <div id="wrapper">
+        <div id="yinyang"></div>
+    </div>
+
+    <style id="css"></style>
+    <script src="main.f96d91e1.js"></script>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        #demo {
+            word-wrap: break-word;
+        }
+
+
+        #yinyang {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+        }
+
+        #yinyang::before {
+            display: block;
+            content: '';
+            /* 这行不能删，不然没有内容就没有 style 了*/
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+
+        }
+
+        #yinyang::after {
+            display: block;
+            content: '';
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+
+        }
+
+
+        @media(max-width: 500px) {
+            #demo {
+                height: 50vh;
+                overflow: auto;
+            }
+
+            #wrapper {
+                height: 50vh;
+            }
+
+            #yinyang {
+                position: relative;
+                left: 20%;
+                top: 20%;
+            }
+        }
+    </style>
+</body>
+
+</html>
